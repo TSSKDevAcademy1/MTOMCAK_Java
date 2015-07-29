@@ -1,5 +1,5 @@
 
-public class Triangle {
+public class Triangle extends Shape {
 	private int size;
 	String triangle = "";
 
@@ -14,17 +14,13 @@ public class Triangle {
 		}
 		this.size = size;
 		return true;
-		
+
 	}
 
-	public Triangle(int size) {
-		int i = 0;
-		while (i < size) {
-			triangle += printChars(size - i, ' ');
-			triangle += printChars(2 * i + 1, '*');
-			triangle += "\n";
-			i++;
-		}
+	public Triangle(int size, int x, int y, char fill) {
+		super(x, y, fill);
+		this.size = size;
+
 	}
 
 	private static final String printChars(int length, char c) {
@@ -38,6 +34,24 @@ public class Triangle {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
+		String pom = "";
+		for (int j = 0; j < getY(); j++) {
+			System.out.println();
+
+		}
+		for (int k = 1; k < getX(); k++)
+		{
+			pom += ' ';
+		}
+		int i = 0;
+		while (i < size) {
+
+			triangle += printChars(size - i, ' ') + pom ;
+			triangle += printChars(2 * i + 1, getFill());
+			
+			triangle += "\n";
+			i++;
+		}
 		return triangle;
 	}
 }
